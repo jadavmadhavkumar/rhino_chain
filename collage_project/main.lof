@@ -5,3 +5,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces DMID High-Level Architecture: Data Flow, Trust Layers, and On-/Off-Chain Separation}}{22}{figure.caption.8}%
 \addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Example Biometric Fusion Pipeline: Multi-modal inputs produce scores, which are fused for a final decision}}{34}{figure.caption.14}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Workflow for Deep Learning Liveness Detection}}{35}{figure.caption.15}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Adaptive Security Flow: Monitor $\rightarrow $ Profile $\rightarrow $ Detect $\rightarrow $ Respond}}{36}{figure.caption.16}%

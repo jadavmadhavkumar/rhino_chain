@@ -83,3 +83,16 @@
 \contentsline {subsection}{\numberline {6.5.2}Principles of Decentralized Key Management}{31}{subsection.6.5.2}%
 \contentsline {subsection}{\numberline {6.5.3}Public-Key Crypto in Decentralized Identity (DIDs)}{31}{subsection.6.5.3}%
 \contentsline {subsection}{\numberline {6.5.4}Ensuring Security of the Private Key}{31}{subsection.6.5.4}%
+\contentsline {chapter}{\numberline {7}The AI/ML Engine: Fusion, Liveness, and Adaptive Security}{33}{chapter.7}%
+\contentsline {section}{\numberline {7.1}The Art of Combination: AI for Biometric Fusion}{33}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Biometric Fusion Algorithms}{33}{subsection.7.1.1}%
+\contentsline {section}{\numberline {7.2}The DeepFake Countermeasure: Liveness Detection with Deep Learning}{34}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Deep Learning for Anti-Spoofing}{34}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Active vs. Passive Liveness Detection}{35}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Proactive Defense: Anomaly Detection and Adaptive Security}{35}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Anomaly Detection}{36}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Adaptive Security}{36}{subsection.7.3.2}%
+\contentsline {section}{\numberline {7.4}The Human Factor: Ethical Considerations and Bias Mitigation}{36}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}The Challenge of Algorithmic Bias}{36}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}Strategies for Mitigation}{37}{subsection.7.4.2}%
+\contentsline {section}{\numberline {7.5}Conclusion}{37}{section.7.5}%

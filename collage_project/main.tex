@@ -1,114 +1,148 @@
 \documentclass[12pt,a4paper,twoside,openright]{book}
 
-% --- Typography & Fonts ---
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{mathpazo}           % Elegant Palatino font for text+math
-\usepackage{lmodern}            % Enhanced Latin Modern
-\usepackage{microtype}          % Font spacing enhancements
+%===========================================================
+% ===================== FONTS & TYPOGRAPHY =================
+%===========================================================
+\usepackage{fontspec} % Requires XeLaTeX or LuaLaTeX
+\setmainfont{Libertinus Serif}[
+  BoldFont={Libertinus Serif Bold},
+  ItalicFont={Libertinus Serif Italic},
+  BoldItalicFont={Libertinus Serif Bold Italic}
+]
+\setsansfont{Libertinus Sans}
+\setmonofont{Fira Code} % For code snippets
+
+\usepackage{microtype} % Better typography
 \usepackage{setspace}
-\onehalfspacing                 % 1.5x spacing for readability
+\onehalfspacing
 
-% --- Page Geometry ---
-\usepackage[a4paper,inner=34mm,outer=24mm,top=28mm,bottom=32mm,headheight=15pt,headsep=10pt,footskip=15mm]{geometry}
+%===========================================================
+% ===================== PAGE LAYOUT ========================
+%===========================================================
+\usepackage[a4paper,inner=35mm,outer=25mm,top=30mm,bottom=30mm,headheight=16pt,headsep=12pt,footskip=18mm]{geometry}
+\linespread{1.15}
 
-% --- Colors ---
+%===========================================================
+% ===================== COLORS =============================
+%===========================================================
 \usepackage{xcolor}
 \definecolor{myblue}{RGB}{0,65,135}
-\definecolor{mygreen}{RGB}{0,100,60}
 \definecolor{chaptergray}{gray}{0.13}
 
-% --- Chapters & Sections ---
+%===========================================================
+% ===================== CHAPTERS & SECTIONS ===============
+%===========================================================
 \usepackage{titlesec}
-\titleformat{\chapter}[display]
-  {\Huge\bfseries\color{myblue}}
-  {\filleft\Huge\thechapter}
-  {1ex}
-  {\titlerule\vspace{1ex}\filright}
-  [\vspace{1ex}\titlerule]
+\usepackage[Bjornstrup]{fncychap} % Modern chapter style
+\ChTitleVar{\Huge\bfseries\color{myblue}}
+\ChRuleWidth{1pt}
+
 \titleformat{\section}
-  {\Large\bfseries\color{myblue}}
+  {\Large\bfseries\headingfont\color{myblue}}
   {\thesection}{1em}{}
 \titleformat{\subsection}
-  {\large\bfseries\color{mygreen}}
+  {\large\bfseries\headingfont\color{chaptergray}}
   {\thesubsection}{1em}{}
+
 \titlespacing*{\chapter}{0pt}{-25pt}{35pt}
 
-% --- Epigraphs for Quotes ---
+%===========================================================
+% ===================== EPIGRAPHS ==========================
+%===========================================================
 \usepackage{epigraph}
-\setlength{\epigraphwidth}{.65\textwidth}
+\setlength{\epigraphwidth}{0.7\textwidth}
+\renewcommand{\epigraphsize}{\small\itshape}
 
-% --- TOC Customization ---
+%===========================================================
+% ===================== TABLE OF CONTENTS ==================
+%===========================================================
 \usepackage{tocloft}
+\renewcommand{\cftpartfont}{\bfseries\LARGE\headingfont\color{chaptergray}}
 \renewcommand{\cftchapfont}{\bfseries\Large}
 \renewcommand{\cftsecfont}{\large}
 \renewcommand{\cftchappagefont}{\bfseries\Large}
 \renewcommand{\cftsecpagefont}{\large}
+\setlength{\cftbeforepartskip}{2em}
 \setlength{\cftbeforechapskip}{1em}
 \setlength{\cftbeforesecskip}{0.2em}
 
-% --- Graphics & Captions ---
+%===========================================================
+% ===================== GRAPHICS & CAPTIONS ===============
+%===========================================================
 \usepackage{graphicx}
 \graphicspath{{./}{images/}}
-\usepackage[labelfont=bf,font=small]{caption}
+\usepackage[font=small,labelfont=bf,justification=centering]{caption}
+\usepackage{float} % For [H] placement
 
-% --- Header & Footer Styling ---
+%===========================================================
+% ===================== HEADERS & FOOTERS ==================
+%===========================================================
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[LE,RO]{\thepage}
-\fancyhead[RE]{\leftmark}
-\fancyhead[LO]{\rightmark}
+\fancyhead[RE,LO]{\nouppercase{\leftmark}} % Chapter name only
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
 \fancypagestyle{plain}{
     \fancyhf{}
     \fancyfoot[C]{\thepage}
     \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{0pt}
 }
 
-% --- Paragraphs ---
+%===========================================================
+% ===================== PARAGRAPHS =========================
+%===========================================================
 \setlength{\parindent}{1.5em}
 \setlength{\parskip}{0.6em}
 
-% --- tcolorbox for Highlights ---
+%===========================================================
+% ===================== TCOLORBOX ==========================
+%===========================================================
 \usepackage[most]{tcolorbox}
 \tcbset{
   highlightstyle/.style={
     colback=blue!5!white,
-    colframe=blue!75!black,
+    colframe=myblue,
     fonttitle=\bfseries,
     sharp corners,
     boxrule=1pt,
-    left=6pt,right=6pt,top=6pt,bottom=6pt
+    left=6pt,right=6pt,top=6pt,bottom=6pt,
+    enhanced,
+    attach boxed title to top left={xshift=3mm,yshift=-2mm},
+    boxed title style={colback=myblue!20!white, sharp corners}
   }
 }
 \newtcolorbox{important}[1][]{
   highlightstyle,title=#1
 }
 
-% --- Hyperlinks ---
+%===========================================================
+% ===================== HYPERLINKS =========================
+%===========================================================
 \usepackage{hyperref}
 \hypersetup{
   colorlinks=true,
   linkcolor=myblue,
   urlcolor=myblue,
-  citecolor=mygreen,
+  citecolor=chaptergray,
+  pdfauthor={Jadav Madhavkumar H.},
   pdftitle={Blockchain-Enabled Multi-Biometric and Multi-ID Authentication System using AI/ML},
-  pdfauthor={Jadav Madhavkumar H.}
+  pdfsubject={Technical Book on Digital Identity Security},
+  pdfkeywords={Blockchain, SSI, Biometric, AI, Authentication},
+  pdfproducer={LaTeX with hyperref}
 }
 
-% --- Glossary & Acronyms ---
+%===========================================================
+% ===================== GLOSSARY & ACRONYMS ===============
+%===========================================================
 \usepackage[acronym,toc]{glossaries}
 \makeglossaries
 \newacronym{ssi}{SSI}{Self-Sovereign Identity}
-% \newglossaryentry{blockchain}{name=blockchain,description={A distributed ledger technology...}}
 
-% --- Long Tables (if needed) ---
-\usepackage{longtable, array}
-
-% --- Cover image with fallback ---
+%===========================================================
+% ===================== COVER PAGE =========================
+%===========================================================
 \usepackage{eso-pic}
 \newcommand{\BackgroundPic}{%
     \put(0,0){%
@@ -118,7 +152,7 @@
             \IfFileExists{Gemini_Generated_Image_z6nz4cz6nz4cz6nz.png}{%
                 \includegraphics[width=\paperwidth,height=\paperheight]{Gemini_Generated_Image_z6nz4cz6nz4cz6nz.png}%
             }{%
-                \fbox{\parbox[c][0.6\paperheight][c]{0.8\paperwidth}{\centering\Large Cover image missing: Gemini_Generated_Image_z6nz4cz6nz4cz6nz.png}}
+                \fbox{\parbox[c][0.6\paperheight][c]{0.8\paperwidth}{\centering\Large Cover image missing}}
             }%
             \vfill
         }%
@@ -126,9 +160,26 @@
 }
 
 %===========================================================
+% ===================== CODE HIGHLIGHTING ==================
+%===========================================================
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\small,
+    frame=single,
+    breaklines=true,
+    backgroundcolor=\color{blue!5!white},
+    rulecolor=\color{myblue},
+    keywordstyle=\color{myblue}\bfseries,
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{orange!80!black}
+}
+
+%===========================================================
+% ===================== DOCUMENT START ====================
+%===========================================================
 \begin{document}
 
-% COVER PAGE (Unpaginated)
+%---------------- COVER PAGE ----------------
 \begin{titlepage}
   \AddToShipoutPictureBG*{\BackgroundPic}
   \thispagestyle{empty}
@@ -136,12 +187,12 @@
 \end{titlepage}
 \clearpage
 
-% TITLE PAGE
+%---------------- TITLE PAGE ----------------
 \pagenumbering{roman}
 \setcounter{page}{1}
 \begin{titlepage}
     \centering
-    {\huge\bfseries\color{myblue}
+    {\huge\bfseries\headingfont\color{myblue}
         Blockchain-Enabled Multi-Biometric and Multi-ID Authentication System using AI/ML\par}
     \vspace{2.3cm}
     {\large\itshape by \par}
@@ -154,18 +205,18 @@
 \end{titlepage}
 \clearpage
 
-% COPYRIGHT PAGE
+%---------------- COPYRIGHT ----------------
 \thispagestyle{empty}
 \vspace*{\fill}
 \begin{center}
-  {\large\bfseries Copyright \textcopyright\ 2025 by Jadav Madhavkumar H.}\par
+  {\large\bfseries Copyright \textcopyright~2025 by Jadav Madhavkumar H.}\par
   \vspace{8pt}
-  All rights reserved. No part of this book may be reproduced or transmitted in any form or by any means without the express written permission of the author.
+  All rights reserved. No part of this book may be reproduced or transmitted in any form without written permission.
 \end{center}
 \vspace*{\fill}
 \clearpage
 
-% DEDICATION PAGE
+%---------------- DEDICATION ----------------
 \thispagestyle{empty}
 \vspace*{\fill}
 \begin{center}
@@ -174,46 +225,69 @@
 \vspace*{\fill}
 \clearpage
 
-% TABLE OF CONTENTS, LISTS
+%---------------- TOC & LISTS ----------------
 \tableofcontents
 \clearpage
 \listoffigures
 \clearpage
 
-% ABSTRACT
+%---------------- ABSTRACT ----------------
 \IfFileExists{abstract.tex}{\input{abstract}}{%
   \begin{center}\textit{Abstract file `abstract.tex' not found.}\end{center}
 }
 \clearpage
 
-% MAIN CONTENT
+%---------------- MAIN CONTENT ----------------
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-% --- Example chapter with epigraph and tcolorbox ---
+% Part I
+\part{Understanding the Crisis and Building the Foundations}
 \chapter{Introduction}
-\epigraph{"The future belongs to those who prepare for it today."}{— Malcolm X}
-This technical guide provides...
+\input{content/chapter_1}
+\input{content/chapter_2}
+\input{content/chapter_3}
+\input{content/chapter_4}
+\input{content/chapter_5}
+\input{content/chapter_6}
+% Part II
+\part{Architecting, Developing, and Deploying the Next-Gen Identity System}
+\chapter{Designing the Decentralized Multi-Biometric Identity System (DMID)}
+\chapter{Cryptographic Engineering for Ultimate Privacy and Security}
+\chapter{Intelligent Architectures of Fusion: A Technical Deep Dive}
+\chapter{The Neural Revolution: AI/ML as the Engine of Intelligent Authentication}
+\chapter{The Unblinking Eye: The Crucial Role of Liveness Detection}
+\chapter{Real-World Implementation and The Path Forward}
+\chapter{User Experience and Accessibility in Digital Identity}
+\chapter{Interoperability and Standards: Bridging Identity Silos}
+\chapter{Data Strategy: The On-Chain vs. Off-Chain Paradigm}
+\chapter{Addressing Scalability and Performance Challenges}
+\chapter{Trust Models in a Decentralized Environment}
+\chapter{Decentralized Identity in Emerging Economies and Humanitarian Contexts}
 
-\begin{important}[Key Idea]
-Blockchain ensures immutability and transparency by keeping a decentralized ledger of identities.
-\end{important}
+% Part III
+\part{Integrity, Security, and the Ethical Future}
+\chapter{The Foundation of Trustless Verification: Merkle Trees}
+\chapter{Proving Without Revealing: The Paradigm of Zero-Knowledge Proofs (ZKPs)}
+\chapter{Securing Computation: The Promise of Homomorphic Encryption (HE)}
+\chapter{The Pillars of Integrity and Authentication: Hashing and Digital Signatures}
+\chapter{The Decentralized Revolution: Key Management for User Sovereignty}
+\chapter{Threats Beyond Spoofing: Insider Risks and Social Engineering}
+\chapter{Privacy-Enhancing Technologies for Anonymous Authentication}
+\chapter{Governance, Self-sovereignty and Community Control}
+\chapter{Quantum Computing and the Future of Cryptography}
+\chapter{Identity Fraud Case Studies and Lessons Learned}
+\chapter{The Art of Combination: AI for Biometric Fusion}
+\chapter{The DeepFake Countermeasure: Liveness Detection with Deep Learning}
+\chapter{Proactive Defense: Anomaly Detection and Adaptive Security}
+\chapter{The Human Factor: Ethical Considerations and Bias Mitigation}
+\chapter{Regulatory Landscape and Global Compliance}
+\chapter{Conclusion}
 
-% Include actual chapters
-\IfFileExists{content/chapter_1.tex}{\input{content/chapter_1}}{\par\medskip\noindent\textit{content/chapter_1.tex missing.}\par\medskip}
-\IfFileExists{content/chapter_2.tex}{\input{content/chapter_2}}{\par\medskip\noindent\textit{content/chapter_2.tex missing.}\par\medskip}
-\IfFileExists{content/chapter_3.tex}{\input{content/chapter_3}}{\par\medskip\noindent\textit{content/chapter_3.tex missing.}\par\medskip}
-\IfFileExists{content/chapter_4.tex}{\input{content/chapter_4}}{\par\medskip\noindent\textit{content/chapter_4.tex missing.}\par\medskip}
-\IfFileExists{content/chapter_5.tex}{\input{content/chapter_5}}{\par\medskip\noindent\textit{content/chapter_5.tex missing.}\par\medskip}
-
-% ... add more chapters as needed ...
-
-% Appendices
+% Appendices & Glossary
 \appendix
-% \chapter{Appendix A: Supplemental Data}
-
-% Glossary
 \clearpage
 \printglossaries
 
 \end{document}
+
